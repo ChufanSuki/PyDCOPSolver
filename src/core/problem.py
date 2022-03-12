@@ -18,13 +18,14 @@ class Problem:
     variables that minimizes the sum of the costs from the constants.
     """
 
-    def __init__(self, allId: List[int], domains: Dict[int, List[int]],
-                 constraintCost: Dict[int, Dict[int, List[List[int]]]],
-                 CommunicationStructures: Dict[int, CommunicationStructure], neighbours: Dict[int, List[int]]):
+    def __init__(self, allId: List[int] = None, domains: Dict[int, List[int]] = None,
+                 constraintCost: Dict[int, Dict[int, List[List[int]]]] = None,
+                 CommunicationStructures: Dict[int, CommunicationStructure] = None, neighbours: Dict[int, List[int]] = None):
         self.allId = allId
         self.domains = domains
         self.constraintCost = constraintCost
         self.neighbours = neighbours
+        self.CommunicationStructures = CommunicationStructures
 
     def getNeighbourDomain(self, id: int) -> Dict[int, List[int]]:
         neighbourDomain: Dict[int, List[int]] = {}
