@@ -1,0 +1,2 @@
+class SyncAgent:
+    pass
