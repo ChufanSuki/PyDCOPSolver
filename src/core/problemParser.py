@@ -1,17 +1,19 @@
 import xml.etree.ElementTree as ET
-from problem import Problem
-from parser import Parser
+from core.problem import Problem
+from core.parser import Parser
 
 
-class ProblemParse:
+class ProblemParser:
     BENCHMARK_RANDOM_DCOP = "RandomDCOP"
     TYPE_DCOP = "DCOP"
 
     def __init__(self, path: str):
+        self.tree = None
         try:
             self.tree = ET.parse(path)
         except:
             print("parse failed")
+            exit(1)
 
     def getBenchmark(self) -> str:
         root = self.tree.getroot()
@@ -25,7 +27,7 @@ class ProblemParse:
 
     def parse(self):
         problem: Problem = Problem()
-        parser: Parser = Parser()
+        parser: Parser = Parser(problem=problem)
         if self.getType() == self.TYPE_DCOP:
             if self.getBenchmark() == self.BENCHMARK_RANDOM_DCOP:
                 parser = Parser(self.tree.getroot(), problem)
