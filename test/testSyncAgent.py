@@ -8,8 +8,10 @@ from core.syncMailer import SyncMailer
 
 class TestSyncAgent(SyncAgent):
     MAX_CYCLE = 2
-    def __init__(self, id: int, domain: List[int], neighbours: List[int], constraintCosts: Dict[int, List[List[int]]], neighbourDomains: Dict[int, List[int]], mailer: SyncMailer):
-        super().__init__(id, domain, neighbours, constraintCosts, neighbourDomains)
+
+    def __init__(self, id: int, domain: List[int], neighbours: List[int], constraintCosts: Dict[int, List[List[int]]],
+                 neighbourDomains: Dict[int, List[int]], mailer: SyncMailer):
+        super().__init__(id, domain, neighbours, constraintCosts, neighbourDomains, mailer)
         self.cycle = 0
 
     def initRun(self):
@@ -34,5 +36,3 @@ class TestSyncAgent(SyncAgent):
 
     def runFinished(self):
         print("Agent {} runFinished".format(self.id))
-
-

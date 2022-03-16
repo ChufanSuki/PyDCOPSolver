@@ -2,7 +2,7 @@ from datetime import time
 
 
 class Message:
-    def __int__(self, idSender: int, idReceiver: int, type: int, value):
+    def __init__(self, idSender: int, idReceiver: int, type: int, value):
         self.idSender = idSender
         self.idReceiver = idReceiver
         self.type = type

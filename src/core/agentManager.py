@@ -6,7 +6,7 @@ from core.asyncMailer import AsyncMailer
 from core.finishedListener import FinishedListener
 from core.problem import Problem
 from core.syncMailer import SyncMailer
-
+import importlib
 
 class AgentManager:
     METHOD_ASYNC = "ASYNC"
@@ -23,7 +23,9 @@ class AgentManager:
         for id in problem.allId:
             agent: Agent = None
             try:
-                agent = Agent(id, problem.domains[id], problem.neighbours[id], problem.constraintCost[id], problem.getNeighbourDomain(id),  self.syncMailer == None if self.syncMailer else self.asyncMailer)
+                moudle_name = importlib.import_module("algorithms")
+                class_name = getattr(moudle_name, descriptor.className)
+                agent = class_name(id, problem.domains[id], problem.neighbours[id], problem.constraintCost[id], problem.getNeighbourDomain(id),  self.syncMailer == None if self.syncMailer else self.asyncMailer)
             except Exception as e:
                 print(e)
             self.agent.append(agent)

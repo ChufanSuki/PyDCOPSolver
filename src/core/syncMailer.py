@@ -12,7 +12,7 @@ class SyncMailer(Process):
     PHASE_AGENT = 1
     PHASE_MAILER = 2
     def __init__(self, finishedListerner: FinishedListener = None):
-        super().__init__()
+        super().__init__("mailer")
         self.resultCycle = None
         self.agents = {}
         self.messageQueue = []
@@ -22,7 +22,8 @@ class SyncMailer(Process):
         self.listener = finishedListerner
         self.messageCount = 0
         self.tail = 0
-        self.agentReady: Set= set()
+        self.agentReady: Set[SyncAgent]= set()
+        self.stoppedAgents: Set[SyncAgent] = set()
 
     def expand(self):
         tmpCostInCycle = [0 for i in range(self.costInCycle.__len__() * 2)]
@@ -58,6 +59,8 @@ class SyncMailer(Process):
                     for syncAgent in self.agents.values():
                         if syncAgent.isRunning():
                             canTerminate = False
+                        else:
+                            self.stoppedAgents.add(syncAgent)
                         cost = cost + syncAgent.getCost()
                     cost = cost / 2
                     if self.tail == self.costInCycle.__len__() - 1:
@@ -75,7 +78,7 @@ class SyncMailer(Process):
     def agentDone(self, id: int):
         with self.agentReady:
             self.agentReady.add(id)
-            if self.agentReady.__len__() == self.agents.__len__():
+            if self.agentReady.__len__() == self.agents.__len__() - self.stoppedAgents.__len__():
                 self.phase = self.PHASE_MAILER
 
     def isDone(self, id: int):

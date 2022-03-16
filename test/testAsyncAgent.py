@@ -9,7 +9,7 @@ from core.asyncAgent import AsyncAgent
 class TestAsyncAgent(AsyncAgent):
     MAX_MESSAGES = 2
     def __init__(self, id: int, domain: List[int], neighbours: List[int], constraintCosts: Dict[int, List[List[int]]], neighbourDomains: Dict[int, List[int]], mailer: AsyncMailer):
-        super().__init__(id, domain, neighbours, constraintCosts, neighbourDomains)
+        super().__init__(id, domain, neighbours, constraintCosts, neighbourDomains, mailer)
         self.currentMessageId = 0
 
     def initRun(self):

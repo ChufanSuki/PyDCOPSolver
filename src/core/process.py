@@ -1,8 +1,17 @@
 import threading
 
-
+# ┌───────────────────────┐
+# │    preExeciton        │ P
+# │                       │ R
+# ├───────────────────────┤ O
+# │    execution          │ C
+# │                       │ E
+# ├───────────────────────┤ S
+# │    postExecution      │ S
+# │                       │
+# └───────────────────────┘
 class Process:
-    def __int__(self, threadName: str):
+    def __init__(self, threadName: str):
         self.threadName = threadName
         self.isRunning = False
         self.lock = threading.RLock()
@@ -15,7 +24,7 @@ class Process:
                     break
             self.execution()
         self.postExecution()
-        print("Thread " + self.threadName + " stopped")
+        print("Thread " + self.threadName + " terminated")
 
     def startProcess(self):
         with self.lock:
@@ -24,17 +33,19 @@ class Process:
             self.isRunning = True
         self.thread = threading.Thread(target=self.run, name=self.threadName)
         self.thread.start()
+        print("Thread " + self.threadName + " started")
 
     def preExecution(self):
-        pass
+        print("Thread " + self.threadName + " is starting")
 
     def execution(self):
-        pass
+        print("Thread " + self.threadName + " is running")
 
     def postExecution(self):
-        pass
+        print("Thread " + self.threadName + " stopped")
 
     def stopProcess(self):
         with self.lock:
             if self.isRunning:
                 self.isRunning = False
+        print("Thread " + self.threadName + " is terminating")

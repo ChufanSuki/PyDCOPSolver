@@ -10,7 +10,7 @@ from core.asyncAgent import AsyncAgent
 
 class AsyncMailer(Process):
     def __init__(self, finishedListener: FinishedListener= None):
-        super().__init__()
+        super().__init__("mailer")
         self.listener = finishedListener
         self.messageQueue: List[Message] = []
         self.agents = {}
