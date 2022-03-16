@@ -10,16 +10,16 @@ import random
 import sys
 from typing import List, Dict
 
-from core.message import Message
-from core.resultCycle import ResultCycle
-from core.syncAgent import SyncAgent
-from core.syncMailer import SyncMailer
+from pacman.core.message import Message
+from pacman.core.resultCycle import ResultCycle
+from pacman.core.syncAgent import SyncAgent
+from pacman.core.syncMailer import SyncMailer
 
 
 class DSA(SyncAgent):
     MSG_VALUE = 1
     p = 1.0
-    DSA_ROUND = 1000
+    DSA_ROUND = 10
 
     def __init__(self, id: int, domain: List[int], neighbours: List[int], constraintCosts: Dict[int, List[List[int]]], neighbourDomains: Dict[int, List[int]], mailer: SyncMailer):
         super().__init__(id, domain, neighbours, constraintCosts, neighbourDomains, mailer)
@@ -53,11 +53,12 @@ class DSA(SyncAgent):
 
     def allMessageDisposed(self):
         super().allMessageDisposed()
+        print("DSA: " + str(self.cycle))
         self.cycle += 1
         if self.cycle < self.DSA_ROUND:
             if random.random() < self.p:
                 bestValue = self.selectBestValue()
-                if self.valueIndex != self.bestValue:
+                if self.valueIndex != bestValue:
                     self.valueIndex = bestValue
                     self.broadcastValueMsg()
         else:

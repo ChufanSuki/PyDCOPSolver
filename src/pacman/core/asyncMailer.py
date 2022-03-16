@@ -1,12 +1,11 @@
 from datetime import datetime
 from typing import List
 
-from core.finishedListener import FinishedListener
-from core.message import Message
-from core.process import Process
-from core.result import Result
-from core.asyncAgent import AsyncAgent
-
+# from core import asyncAgent
+from pacman.core.finishedListener import FinishedListener
+from pacman.core.message import Message
+from pacman.core.process import Process
+from pacman.core.result import Result
 
 class AsyncMailer(Process):
     def __init__(self, finishedListener: FinishedListener= None):
@@ -18,7 +17,7 @@ class AsyncMailer(Process):
         self.startTime = None
         self.result: Result = Result()
 
-    def registerAgent(self, agent:AsyncAgent):
+    def registerAgent(self, agent):
         self.agents[agent.id] = agent
 
     def addMessage(self, message: Message):

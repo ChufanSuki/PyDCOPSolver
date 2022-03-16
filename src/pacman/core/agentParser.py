@@ -1,6 +1,6 @@
 from typing import Dict
 import xml.etree.ElementTree as ET
-from core.agentDescriptor import AgentDescriptor
+from pacman.core.agentDescriptor import AgentDescriptor
 
 
 class AgentParser:

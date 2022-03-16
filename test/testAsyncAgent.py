@@ -1,9 +1,8 @@
-import random
 from typing import List, Dict
 
-from core.asyncMailer import AsyncMailer
-from core.message import Message
-from core.asyncAgent import AsyncAgent
+from pacman.core.asyncMailer import AsyncMailer
+from pacman.core.message import Message
+from pacman.core.asyncAgent import AsyncAgent
 
 
 class TestAsyncAgent(AsyncAgent):

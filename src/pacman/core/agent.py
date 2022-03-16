@@ -6,10 +6,14 @@ Each agent has its own thread, which is used to handle messages as they are
 dispatched to computations hosted on this agent.
 """
 from typing import Dict, List
-from message import Message
-import process
-class Agent(process.Process):
-    def __init__(self, id:int, domain: List[int], neighbours: List[int], constraintCosts: Dict[int, List[List[int]]], neighbourDomains: Dict[int, List[int]]):
+
+from pacman.core.message import Message
+from pacman.core.process import Process
+
+
+class Agent(Process):
+    def __init__(self, id: int, domain: List[int], neighbours: List[int], constraintCosts: Dict[int, List[List[int]]],
+                 neighbourDomains: Dict[int, List[int]]):
         super().__init__("Agent " + str(id))
         self.id = id
         self.domain = domain

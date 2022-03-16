@@ -1,6 +1,6 @@
 import re
 import xml.etree.ElementTree as ET
-from core.problem import Problem
+from pacman.core.problem import Problem
 
 
 class Parser:
@@ -23,9 +23,9 @@ class Parser:
         self.problem.allId = [0] * int(agents.attrib["nbAgents"])
         index = 0
         for agent in agents:
-            self.problem.allId[index] = agent.attrib["id"]
+            self.problem.allId[index] = int(agent.attrib["id"])
             index = index + 1
-            self.agentNameId[agent.attrib["name"]] = agent.attrib["id"]
+            self.agentNameId[agent.attrib["name"]] = int(agent.attrib["id"])
 
     def parseDomain(self):
         domains = self.root.find("./domains")
@@ -80,12 +80,20 @@ class Parser:
                 self.latter = latter
 
     def processTuple(self, tuple: str, constraintName: str):
+        """Prcoess tuple to fill in problem.constraintCost
+
+        Arguments:
+            tuple {str} -- tuple e.g. 40:1 3|73:2 1|76:1 2|54:3 2|69:3 3|18:2 2|83:1 1|60:3 1|15:2 3
+            constraintName {str} -- constraint name e.g. R0
+
+        """
+
         tuples = re.split("\\|", tuple)
         pair: Parser.AgentPair = self.constraintInfo.get(constraintName)
-        formerConstraintCost = [[0 for j in range(len(self.problem.domains[pair.former]))] for i in
-                                range(len(self.problem.domains[pair.latter]))]
-        latterConstraintCost = [[0 for j in range(len(self.problem.domains[pair.latter]))] for i in range(len(
-            self.problem.domains[pair.former]))]
+        formerConstraintCost = [[0 for j in range(len(self.problem.domains[pair.latter]))] for i in
+                                range(len(self.problem.domains[pair.former]))]
+        latterConstraintCost = [[0 for j in range(len(self.problem.domains[pair.former]))] for i in range(len(
+            self.problem.domains[pair.latter]))]
         for t in tuples:
             info = re.split("[:| ]", t)
             formerValue = int(info[1]) - 1
@@ -93,15 +101,15 @@ class Parser:
             cost = int(info[0])
             formerConstraintCost[formerValue][latterValue] = cost
             latterConstraintCost[latterValue][formerValue] = cost
-        if pair.former in self.problem.constraintCost:
-            constraintCost = self.problem.constraintCost[pair.former]
-        else:
+        if pair.former not in self.problem.constraintCost:
             constraintCost = {}
             self.problem.constraintCost[pair.former] = constraintCost
-        constraintCost[pair.latter] = formerConstraintCost
-        if pair.latter in self.problem.constraintCost:
-            constraintCost = self.problem.constraintCost[pair.latter]
         else:
+            constraintCost = self.problem.constraintCost[pair.former]
+        constraintCost[pair.latter] = formerConstraintCost
+        if pair.latter not in self.problem.constraintCost:
             constraintCost = {}
             self.problem.constraintCost[pair.latter] = constraintCost
+        else:
+            constraintCost = self.problem.constraintCost[pair.latter]
         constraintCost[pair.former] = latterConstraintCost

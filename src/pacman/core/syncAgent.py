@@ -1,8 +1,8 @@
 from typing import Dict, List
 
-from core.agent import Agent
-from core.message import Message
-from core.syncMailer import SyncMailer
+from pacman.core.agent import Agent
+from pacman.core.message import Message
+from pacman.core.syncMailer import SyncMailer
 
 
 class SyncAgent(Agent):
@@ -20,7 +20,7 @@ class SyncAgent(Agent):
         self.messageQueue.append(message)
 
     def sendMessage(self, message: Message):
-        self.mailer.sendMessage(message)
+        self.mailer.addMessage(message)
 
     def execution(self):
         if self.mailer.phase == SyncMailer.PHASE_AGENT and not self.mailer.isDone(self.id):

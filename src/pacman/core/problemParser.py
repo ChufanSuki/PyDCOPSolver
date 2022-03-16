@@ -1,6 +1,6 @@
 import xml.etree.ElementTree as ET
-from core.problem import Problem
-from core.parser import Parser
+from pacman.core.problem import Problem
+from pacman.core.parser import Parser
 
 
 class ProblemParser:

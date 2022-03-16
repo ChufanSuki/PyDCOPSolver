@@ -1,6 +1,6 @@
-from core.agentManager import AgentManager
-from core.finishedListener import FinishedListener
-from core.problemParser import ProblemParser
+from pacman.core.agentManager import AgentManager
+from pacman.core.finishedListener import FinishedListener
+from pacman.core.problemParser import ProblemParser
 
 
 class Solver:

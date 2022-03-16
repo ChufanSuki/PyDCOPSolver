@@ -5,7 +5,7 @@ from pacman.core.problemParser import ProblemParser
 from pacman.core.resultCycle import ResultCycle
 
 agentDescriptorPath = "/home/dcop/PycharmProjects/Pacman/test/agent.xml"
-agentType = "TestSyncAgent"
+agentType = "DSA"
 problemPath = "/home/dcop/PycharmProjects/Pacman/test/test.xml"
 
 class TestListener(FinishedListener):

@@ -1,6 +1,6 @@
 from typing import List, Dict
 
-from core.communicationStructure import CommunicationStructure
+from pacman.core.communicationStructure import CommunicationStructure
 
 
 class Problem:

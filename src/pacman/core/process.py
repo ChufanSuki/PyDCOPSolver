@@ -1,3 +1,4 @@
+import logging
 import threading
 
 # ┌───────────────────────┐
@@ -12,9 +13,11 @@ import threading
 # └───────────────────────┘
 class Process:
     def __init__(self, threadName: str):
+        self.suppressOutput = False
         self.threadName = threadName
         self.isRunning = False
         self.lock = threading.RLock()
+        self.logger = logging.getLogger('pacman.process')
 
     def run(self):
         self.preExecution()
@@ -24,7 +27,8 @@ class Process:
                     break
             self.execution()
         self.postExecution()
-        print("Thread " + self.threadName + " terminated")
+        if not self.suppressOutput:
+            print("Thread " + self.threadName + " terminated")
 
     def startProcess(self):
         with self.lock:
@@ -33,19 +37,22 @@ class Process:
             self.isRunning = True
         self.thread = threading.Thread(target=self.run, name=self.threadName)
         self.thread.start()
-        print("Thread " + self.threadName + " started")
+        self.logger.info("Thread " + self.threadName + " started")
 
     def preExecution(self):
-        print("Thread " + self.threadName + " is starting")
+        self.logger.info("Thread " + self.threadName + " is starting")
 
     def execution(self):
-        print("Thread " + self.threadName + " is running")
+        self.logger.info("Thread " + self.threadName + " is running")
 
     def postExecution(self):
-        print("Thread " + self.threadName + " stopped")
+        self.logger.info("Thread " + self.threadName + " stopped")
 
     def stopProcess(self):
         with self.lock:
             if self.isRunning:
                 self.isRunning = False
-        print("Thread " + self.threadName + " is terminating")
+        self.logger.info("Thread " + self.threadName + " is terminating")
+
+    def setSuppressOutpu(self, suppressOutput: bool):
+        self.suppressOutput = suppressOutput

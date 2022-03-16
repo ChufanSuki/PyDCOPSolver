@@ -1,12 +1,12 @@
 from typing import List, Dict
 
-from core.agent import Agent
-from core.asyncMailer import AsyncMailer
-from core.message import Message
+from pacman.core import asyncMailer
+from pacman.core.agent import Agent
+from pacman.core.message import Message
 
 
 class AsyncAgent(Agent):
-    def __init__(self, id: int, domain: List[int], neighbours: List[int], constraintCosts: Dict[int, List[List[int]]], neighbourDomains: Dict[int, List[int]], mailer: AsyncMailer):
+    def __init__(self, id: int, domain: List[int], neighbours: List[int], constraintCosts: Dict[int, List[List[int]]], neighbourDomains: Dict[int, List[int]], mailer: asyncMailer.AsyncMailer):
         super().__init__(id, domain, neighbours, constraintCosts, neighbourDomains)
         self.mailer = mailer
         self.mailer.registerAgent(self)

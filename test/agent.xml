@@ -19,8 +19,8 @@
         <agent name="ADPOP" class="edu.cqu.algorithms.dcop.incomplete.ADPOP.ADPOPRed" method="sync"></agent>
         <agent name="DPOP1" class="edu.cqu.kingnoat.myAlgorithms.DPOPAgent" method="sync"></agent>
         <agent name="ADPOPVP" class="edu.cqu.algorithms.dcop.incomplete.ADPOP.ADPOPVP" method="sync"></agent>
-
-        <agent name="DSA" class="edu.cqu.algorithms.dcop.incomplete.DSA.DSA" method="sync"></agent>
+        <agent name="TestSyncAgent" class="TestSyncAgent" method="sync"></agent>
+        <agent name="DSA" class="DSA" method="sync"></agent>
 
         <agent name="MGM" class="edu.cqu.algorithms.dcop.incomplete.MGM.MGM" method="sync"></agent>
         <agent name="MGM1" class="edu.cqu.algorithms.dcop.incomplete.MGM.MGMAgent" method="sync"></agent>

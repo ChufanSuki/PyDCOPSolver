@@ -1,6 +1,6 @@
 from typing import List
 
-from core.result import Result
+from pacman.core.result import Result
 
 
 class ResultCycle(Result):
