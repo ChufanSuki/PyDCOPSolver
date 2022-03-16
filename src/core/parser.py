@@ -98,7 +98,7 @@ class Parser:
         else:
             constraintCost = {}
             self.problem.constraintCost[pair.former] = constraintCost
-        constraintCost[pair.latter] = latterConstraintCost
+        constraintCost[pair.latter] = formerConstraintCost
         if pair.latter in self.problem.constraintCost:
             constraintCost = self.problem.constraintCost[pair.latter]
         else:

@@ -1,16 +1,92 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <manifest>
     <agents>
-        <agent name="ADPOP" class="adpop.ADPOP" method="sync"></agent>
-        <agent name="ALS_DSA" class="DSA.DsaAlsAgent" method="sync"/>
-        <agent name="MaxsumAls" class="maxsum.MaxsumAlsAgent" method="SYNC"/>
-        <agent name="MaxsumADAls" class="maxsum.advp.MaxsumADAlsAgent" method="SYNC"/>
-        <agent name="MaxsumADVPAls" class="maxsum.advp.MaxsumADVPAlsAgent" method="SYNC"/>
-        <agent name="MaxsumADSSVPAls" class="maxsum.adssvp.MaxsumADSSVPAlsAgent" method="SYNC"/>
-        <agent name="MaxsumHBVPAls" class="maxsum.hbvp.MaxsumHBVPAlsAgent" method="SYNC"/>
-        <agent name="MaxsumpvpAls" class="maxsum.pvp.MaxsumPVPAlsAgent" method="SYNC"/>
-        <agent name="MaxsumADSSVPLSAls" class="maxsum.adssvp.MaxsumADSSVPWithLocalSearchAlsAgent" method="SYNC"/>
-        <agent name="MaxsumDampingAls" class="maxsum.damping.MaxsumDampingAlsAgent" method="SYNC"/>
-        <agent name="MaxsumadmpAls" class="maxsum.advp.MaxsumADMPAlsAgent" method="SYNC"/>
-    </agents>
+        //
+        <agent name="NCBB" class="edu.cqu.test.xiagao.retentionFinal.NCBB1.NCBB" method="SYNC"></agent>
+        <agent name="SBB" class="edu.cqu.algorithms.dcop.complete.SBBAgent" method="SYNC"></agent>
+        <agent name="SBBFinal" class="edu.cqu.algorithms.dcop.complete.SBBFinal" method="SYNC"></agent>
+        <agent name="TreeBB" class="edu.cqu.algorithms.dcop.complete.TreeBBFinal" method="SYNC"></agent>
+        <agent name="TreeBB1" class="edu.cqu.algorithms.dcop.complete.TreeBBAgent" method="SYNC"></agent>
+        <agent name="TreeBB2" class="edu.cqu.kingnoat.myAlgorithms.TreeBBAgent" method="SYNC"></agent>
+        <agent name="DPOP" class="edu.cqu.algorithms.dcop.incomplete.ADPOP.DPOP" method="sync"></agent>
+        <agent name="PTFB" class="edu.cqu.algorithms.dcop.complete.PTFB" method="sync"></agent>
+
+        <agent name="TreeBBRetention" class="edu.cqu.test.xiagao.retentionFinal.TreeBBRetention" method="SYNC"></agent>
+        <agent name="TreeBBRetentionPlus" class="edu.cqu.test.xiagao.retentionFinal.TreeBBRetentionPlus" method="SYNC"></agent>
+        <!--for test -->
+        <!-- DCOP Incomplete-->
+        <agent name="Popt" class="edu.cqu.algorithms.dcop.incomplete.ADPOP.POpt" method="sync"></agent>
+        <agent name="ADPOP" class="edu.cqu.algorithms.dcop.incomplete.ADPOP.ADPOPRed" method="sync"></agent>
+        <agent name="DPOP1" class="edu.cqu.kingnoat.myAlgorithms.DPOPAgent" method="sync"></agent>
+        <agent name="ADPOPVP" class="edu.cqu.algorithms.dcop.incomplete.ADPOP.ADPOPVP" method="sync"></agent>
+
+        <agent name="DSA" class="edu.cqu.algorithms.dcop.incomplete.DSA.DSA" method="sync"></agent>
+
+        <agent name="MGM" class="edu.cqu.algorithms.dcop.incomplete.MGM.MGM" method="sync"></agent>
+        <agent name="MGM1" class="edu.cqu.algorithms.dcop.incomplete.MGM.MGMAgent" method="sync"></agent>
+
+        <!--MB-DPOP complete test edu.cqu.test.xiagao.ADPOP.MBDPOP -->
+        <agent name="MBDPOP" class="edu.cqu.test.xiagao.ADPOP.VARIANT.MBDPOP" method="sync"></agent>
+        <agent name="ODPOP" class="edu.cqu.test.xiagao.ADPOP.ODPOP" method="sync"></agent>
+        <agent name="ADOPT" class="edu.cqu.test.xiagao.ADPOP.ADOPT" method="async"></agent>
+        <!-- HS-CAI-->
+        <agent name="HSCAI" class="edu.cqu.test.xiagao.HSACI.interegrity.k6.PTISBB_T" method="sync"></agent>
+        <!-- kingnoat study test-->
+        <agent name="mySBB" class="edu.cqu.kingnoat.myAlgorithms.mySBB" method="sync"></agent>
+        <agent name="TreeBB_hjh" class="edu.cqu.kingnoat.myAlgorithms.TreeBB_hjh" method="sync"></agent>
+        <agent name="PTFB" class="edu.cqu.algorithms.dcop.complete.PTFB" method="sync"></agent>
+        <agent name="treebbcache" class="edu.cqu.kingnoat.myAlgorithms.treebbCaching" method="sync"></agent>
+        <agent name="treebbcachetext" class="edu.cqu.kingnoat.myAlgorithms.treebbCachingText1" method="sync"></agent>
+        <agent name="treeBBRetentionV1" class="edu.cqu.kingnoat.myAlgorithms.retention.treeBBRetentionV1" method="sync"></agent>
+        <agent name="BnBADOPTRetention" class="edu.cqu.test.xiagao.retentionFinal.BnBADOPT.BnBADOPTRetention" method="sync"></agent>
+        <agent name="BnBADOPTRetention1" class="edu.cqu.test.xiagao.retentionFinal.BnBADOPT.BnBADOPTRetention1" method="sync"></agent>
+        <agent name="BnBADOPT" class="edu.cqu.test.xiagao.retentionFinal.BnBADOPT.BnBADOPT" method="sync"></agent>
+        <agent name="BnBADOPTRetention1" class="edu.cqu.test.xiagao.retentionFinal.BnBADOPT.BnBADOPTRetention1" method="sync"></agent>
+        <agent name="PTFBRetention" class="edu.cqu.test.xiagao.retentionFinal.ptfb.PTFBRetention" method="sync"></agent>
+        <agent name="PTFBRetentionV2" class="edu.cqu.test.xiagao.retentionFinal.ptfb.PTFBRetentionV2" method="sync"></agent>
+        <agent name="PTFBtest" class="edu.cqu.test.xiagao.retentionFinal.ptfb.PTFB_mytest" method="sync"></agent>
+        <agent name="PTFB1" class="edu.cqu.test.xiagao.retentionFinal.ptfb.PTFB" method="sync"></agent>
+        <agent name="NCBBretention" class="edu.cqu.test.xiagao.retentionFinal.NCBBRetention" method="SYNC"></agent>
+        <agent name="TreeBBRetentionPlusText1" class="edu.cqu.test.xiagao.retentionFinal.TreeBBRetentionPlusTest1" method="SYNC"></agent>
+        <agent name="TreeBBRetentionPlusText2" class="edu.cqu.test.xiagao.retentionFinal.TreeBBRetentionPlusTest2" method="SYNC"></agent>
+        <agent name="TreeBBRetentionPlusText3" class="edu.cqu.test.xiagao.retentionFinal.TreeBBRetentionPlusTest3" method="SYNC"></agent>
+
+        <!-- change page -->
+        <agent name="TreeBBRetentionPlusFIFO" class="edu.cqu.test.xiagao.retentionFinal.Treebb.FIFO.TreeBBRetentionPlusFIFO" method="SYNC"></agent>
+        <agent name="TreeBBRetentionPlusFILO" class="edu.cqu.test.xiagao.retentionFinal.Treebb.FILO.TreeBBRetentionPlusFILO" method="SYNC"></agent>
+        <agent name="TreeBBRetentionPlusLFU" class="edu.cqu.test.xiagao.retentionFinal.Treebb.LFU.TreeBBRetentionPlusLFU" method="SYNC"></agent>
+        <agent name="TreeBBRetentionPlusLRU" class="edu.cqu.test.xiagao.retentionFinal.Treebb.LRU.TreeBBRetentionPlusLRU" method="SYNC"></agent>
+        <agent name="TreeBBRetentionPlusMAXUTILITY" class="edu.cqu.test.xiagao.retentionFinal.Treebb.MAXUTILITY.TreeBBRetentionPlusMAXTILITY" method="SYNC"></agent>
+        <agent name="TreeBBRetentionPlusOPT" class="edu.cqu.test.xiagao.retentionFinal.Treebb.OPT.TreeBBRetentionPlusOPT" method="SYNC"></agent>
+        <agent name="TreeBBRetentionPlusSendUB" class="edu.cqu.test.xiagao.retentionFinal.Treebb.SendUB.TreeBBRetentionPlusSendUB" method="SYNC"></agent>
+        <agent name="TreeBBRetentionPlusOri" class="edu.cqu.test.xiagao.retentionFinal.Treebb.Ori.TreeBBRetentionPlusOri" method="SYNC"></agent>
+        <agent name="TreeBBRetentionPlusFineGrained" class="edu.cqu.test.xiagao.retentionFinal.Treebb.FineGrained.TreeBBRetentionPlusFineGrained" method="SYNC"></agent>
+        <agent name="TreeBBRetentionPlusSelf" class="edu.cqu.test.xiagao.retentionFinal.Treebb.Self.TreeBBRetentionPlusSelf" method="SYNC"></agent>
+        <agent name="TreeBBRetentionPlusSelf1" class="edu.cqu.test.xiagao.retentionFinal.Treebb.Self1.Ori.TreeBBRetentionPlusOri" method="SYNC"></agent>
+        <agent name="TreeBBRetentionPlusPageTest" class="edu.cqu.test.xiagao.retentionFinal.Treebb.pageTest.TreeBBRetentionPlusPageTest" method="SYNC"></agent>
+        <agent name="TreeBBRetentionPlusPageTest1" class="edu.cqu.test.xiagao.retentionFinal.Treebb.pageTest1.TreeBBRetentionPlusPageTest1" method="SYNC"></agent>
+        <agent name="TreeBBRetentionPlusPageTest3" class="edu.cqu.test.xiagao.retentionFinal.Treebb.pageTest3.TreeBBRetentionPlusPageTest3" method="SYNC"></agent>
+        <agent name="TreeBBRetentionPlusPageTest4" class="edu.cqu.test.xiagao.retentionFinal.Treebb.pageTest4.TreeBBRetentionPlusPageTest4" method="SYNC"></agent>
+        <agent name="TreeBBRetentionPlusPageTest5" class="edu.cqu.test.xiagao.retentionFinal.Treebb.pageTest5.TreeBBRetentionPlusPageTest5" method="SYNC"></agent>
+
+        <!-- HSCAI-retention -->
+        <agent name="HSCAIRetention" class="edu.cqu.test.xiagao.retentionFinal.HSCAI.PTISBB_T" method="SYNC"></agent>
+        <!-- ADOPT-retention -->
+        <agent name="ADOPTK" class="edu.cqu.test.xiagao.retentionFinal.ADOPT.ADOPT_K" method="SYNC"></agent>
+        <agent name="ADOPTKRetention1" class="edu.cqu.test.xiagao.retentionFinal.ADOPT.ADOPT_KRetentionOld" method="SYNC"></agent>
+        <agent name="ADOPTKRetention" class="edu.cqu.test.xiagao.retentionFinal.ADOPT.ADOPT_KRetemtion" method="SYNC"></agent>
+        <agent name="ADOPTplusRetention" class="edu.cqu.test.xiagao.retentionFinal.ADOPT.ADOPT_Plus" method="SYNC"></agent>
+        <!-- PTISBB-retention -->
+        <agent name="PTISBB" class="edu.cqu.test.xiagao.retentionFinal.PTISBB.PTISBB" method="SYNC"></agent>
+        <agent name="PTISBBRS" class="edu.cqu.test.xiagao.retentionFinal.PTISBB.PTISBBRS" method="SYNC"></agent>
+        <agent name="PTISBBNOC" class="edu.cqu.test.xiagao.retentionFinal.PTISBB.PTISBBNOC" method="SYNC"></agent>
+
+        <!-- BIP -->
+        <agent name="MBDPOPK" class="edu.cqu.kingnoat.algorithms.MB_DPOP" method="SYNC"></agent>
+        <agent name="MBDPOPKBIP1" class="edu.cqu.kingnoat.algorithms.BIPbase.MB_DPOP_BIP" method="SYNC"></agent>
+
+
+        <agent name="RMBDPOPK" class="edu.cqu.kingnoat.algorithms.RMB_DPOP" method="SYNC"></agent>
+        <agent name="RMBDPOPKBIP1" class="edu.cqu.kingnoat.algorithms.BIPbase.RMB_DPOP_BIP" method="SYNC"></agent>
+        </agents>
 </manifest>
