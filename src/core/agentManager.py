@@ -2,12 +2,13 @@ import time
 
 from core.agent import Agent
 from core.agentParser import AgentParser
+from core.asyncMailer import AsyncMailer
 from core.finishedListener import FinishedListener
 from core.problem import Problem
 from core.syncMailer import SyncMailer
 
 
-def AgentManager:
+class AgentManager:
     METHOD_ASYNC = "ASYNC"
     METHOD_SYNC = "SYNC"
 

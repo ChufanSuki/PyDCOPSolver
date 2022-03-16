@@ -5,19 +5,20 @@ class Process:
     def __int__(self, threadName: str):
         self.threadName = threadName
         self.isRunning = False
+        self.lock = threading.RLock()
 
     def run(self):
         self.preExecution()
         while True:
-            with self.isRunning:
+            with self.lock:
                 if not self.isRunning:
                     break
             self.execution()
         self.postExecution()
         print("Thread " + self.threadName + " stopped")
 
-    def start(self):
-        with self.isRunning:
+    def startProcess(self):
+        with self.lock:
             if self.isRunning:
                 return
             self.isRunning = True
@@ -34,6 +35,6 @@ class Process:
         pass
 
     def stopProcess(self):
-        with self.isRunning:
+        with self.lock:
             if self.isRunning:
                 self.isRunning = False
